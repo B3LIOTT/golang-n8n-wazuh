@@ -1,0 +1,93 @@
+{
+    "_index": "wazuh-alerts-4.x-2025.01.23",
+    "_id": "itUJlJQBpRBK8tTmQEgN",
+    "_score": null,
+    "_source": {
+      "predecoder": {
+        "hostname": "OPNsense.insoc.local",
+        "program_name": "filterlog",
+        "timestamp": "Jan 23 17:40:12"
+      },
+      "input": {
+        "type": "log"
+      },
+      "agent": {
+        "ip": "192.168.1.14",
+        "name": "OPNsense.insoc.local",
+        "id": "002"
+      },
+      "previous_output": "Jan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2227,0,none,17,udp,365,192.168.1.42,224.0.0.251,5353,5353,345\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2227,0,none,17,udp,365,192.168.1.42,224.0.0.251,5353,5353,345\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,255,2226,0,none,17,udp,165,192.168.1.42,224.0.0.251,5353,5353,145\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2224,0,none,17,udp,79,192.168.1.42,224.0.0.251,5353,5353,59\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2225,0,none,17,udp,429,192.168.1.42,224.0.0.251,5353,5353,409\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2225,0,none,17,udp,429,192.168.1.42,224.0.0.251,5353,5353,409\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2223,0,none,17,udp,79,192.168.1.42,224.0.0.251,5353,5353,59\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2224,0,none,17,udp,79,192.168.1.42,224.0.0.251,5353,5353,59\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2223,0,none,17,udp,79,192.168.1.42,224.0.0.251,5353,5353,59\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2222,0,none,17,udp,79,192.168.1.42,224.0.0.251,5353,5353,59\nJan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,1,2222,0,none,17,udp,79,192.168.1.42,224.0.0.251,5353,5353,59",
+      "data": {
+        "protocol": "udp",
+        "srcip": "192.168.1.42",
+        "dstport": "5353",
+        "length": "145",
+        "action": "block",
+        "srcport": "5353",
+        "dstip": "224.0.0.251",
+        "id": "1eb94a38e58994641aff378c21d5984f"
+      },
+      "manager": {
+        "name": "wazuh"
+      },
+      "rule": {
+        "mail": false,
+        "level": 10,
+        "pci_dss": [
+          "1.4",
+          "10.6.1"
+        ],
+        "hipaa": [
+          "164.312.a.1",
+          "164.312.b"
+        ],
+        "tsc": [
+          "CC6.7",
+          "CC6.8",
+          "CC7.2",
+          "CC7.3"
+        ],
+        "description": "Multiple pfSense firewall blocks events from same source.",
+        "groups": [
+          "pfsense",
+          "multiple_blocks"
+        ],
+        "nist_800_53": [
+          "SC.7",
+          "AU.6"
+        ],
+        "frequency": 18,
+        "firedtimes": 627,
+        "mitre": {
+          "technique": [
+            "Brute Force"
+          ],
+          "id": [
+            "T1110"
+          ],
+          "tactic": [
+            "Credential Access"
+          ]
+        },
+        "id": "87702",
+        "gpg13": [
+          "4.12"
+        ]
+      },
+      "location": "/var/ossec/logs/opnsense_syslog.log",
+      "decoder": {
+        "name": "pf"
+      },
+      "id": "1737650414.2744890",
+      "full_log": "Jan 23 17:40:12 OPNsense.insoc.local filterlog[25667]: 77,,,1eb94a38e58994641aff378c21d5984f,em1,match,block,in,4,0x0,,255,2226,0,none,17,udp,165,192.168.1.42,224.0.0.251,5353,5353,145",
+      "timestamp": "2025-01-23T16:40:14.943+0000"
+    },
+    "fields": {
+      "timestamp": [
+        "2025-01-23T16:40:14.943Z"
+      ]
+    },
+    "sort": [
+      1737650414943
+    ]
+  }

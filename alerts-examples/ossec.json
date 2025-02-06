@@ -1,0 +1,98 @@
+{
+    "_index": "wazuh-alerts-4.x-2025.01.20",
+    "_id": "tB6fgpQBguYHMqwRIXzF",
+    "_score": null,
+    "_source": {
+      "syscheck": {
+        "mode": "scheduled",
+        "path": "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\MpKsl912b0f5b",
+        "value_type": "REG_SZ",
+        "sha1_after": "b570ddcfc85d2fd41e9c3926370bd7eda0cb9998",
+        "size_after": "100",
+        "arch": "[x32]",
+        "event": "deleted",
+        "md5_after": "40e52c5de891cf22605396523a93d163",
+        "sha256_after": "1100c7b807131c12adb8fed6a2f2ef26f07df45b19d03f39bb9f1354ba4b3cee",
+        "value_name": "AllowedProcessName"
+      },
+      "input": {
+        "type": "log"
+      },
+      "agent": {
+        "ip": "192.168.1.43",
+        "name": "DESKTOP-GJKFCD3",
+        "id": "004"
+      },
+      "manager": {
+        "name": "wazuh"
+      },
+      "rule": {
+        "mail": false,
+        "level": 5,
+        "pci_dss": [
+          "11.5"
+        ],
+        "hipaa": [
+          "164.312.c.1",
+          "164.312.c.2"
+        ],
+        "tsc": [
+          "PI1.4",
+          "PI1.5",
+          "CC6.1",
+          "CC6.8",
+          "CC7.2",
+          "CC7.3"
+        ],
+        "description": "Registry Value Entry Deleted.",
+        "groups": [
+          "ossec",
+          "syscheck",
+          "syscheck_entry_deleted",
+          "syscheck_registry"
+        ],
+        "nist_800_53": [
+          "SI.7"
+        ],
+        "gdpr": [
+          "II_5.1.f"
+        ],
+        "firedtimes": 1,
+        "mitre": {
+          "technique": [
+            "File Deletion",
+            "Data Destruction",
+            "Modify Registry"
+          ],
+          "id": [
+            "T1070.004",
+            "T1485",
+            "T1112"
+          ],
+          "tactic": [
+            "Defense Evasion",
+            "Impact"
+          ]
+        },
+        "id": "751",
+        "gpg13": [
+          "4.13"
+        ]
+      },
+      "location": "syscheck",
+      "decoder": {
+        "name": "syscheck_registry_value_deleted"
+      },
+      "id": "1737358252.622569",
+      "full_log": "Registry Value '[x32] HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\MpKsl912b0f5b\\AllowedProcessName' deleted\nMode: scheduled\n",
+      "timestamp": "2025-01-20T07:30:52.650+0000"
+    },
+    "fields": {
+      "timestamp": [
+        "2025-01-20T07:30:52.650Z"
+      ]
+    },
+    "sort": [
+      1737358252650
+    ]
+  }

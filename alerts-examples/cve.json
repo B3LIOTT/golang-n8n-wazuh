@@ -1,0 +1,100 @@
+{
+    "_index": "wazuh-alerts-4.x-2025.01.21",
+    "_id": "SAwUiZQBe3YkRPrLsDXG",
+    "_score": null,
+    "_source": {
+      "input": {
+        "type": "log"
+      },
+      "agent": {
+        "ip": "10.0.2.15",
+        "name": "DESKTOP-4ILPQBN",
+        "id": "007"
+      },
+      "manager": {
+        "name": "wazuh"
+      },
+      "data": {
+        "vulnerability": {
+          "severity": "High",
+          "package": {
+            "condition": "Package equal to 3.13.0",
+            "name": "Python 3.13.0 (64-bit)",
+            "source": " ",
+            "version": "3.13.150.0",
+            "architecture": " "
+          },
+          "assigner": "PSF",
+          "cwe_reference": "CWE-1333",
+          "published": "2024-09-03T13:15:05Z",
+          "classification": "CVSS",
+          "title": "CVE-2024-6232 affects Python 3.13.0 (64-bit)",
+          "type": "Packages",
+          "rationale": "There is a MEDIUM severity vulnerability affecting CPython.      Regular expressions that allowed excessive backtracking during tarfile.TarFile header parsing are vulnerable to ReDoS via specifically-crafted tar archives.",
+          "reference": "https://github.com/python/cpython/issues/121285, https://github.com/python/cpython/pull/121286, https://github.com/python/cpython/commit/4eaf4891c12589e3c7bdad5f5b076e4c8392dd06, https://github.com/python/cpython/commit/743acbe872485dc18df4d8ab2dc7895187f062c4, https://github.com/python/cpython/commit/d449caf8a179e3b954268b3a88eb9170be3c8fbf, https://github.com/python/cpython/commit/ed3a49ea734ada357ff4442996fd4ae71d253373, https://mail.python.org/archives/list/security-announce@python.org/thread/JRYFTPRHZRTLMZLWQEUHZSJXNHM4ACTY/, https://github.com/python/cpython/commit/7d1f50cd92ff7e10a1c15a8f591dde8a6843a64d, https://github.com/python/cpython/commit/b4225ca91547aa97ed3aca391614afbb255bc877",
+          "score": {
+            "version": "3.1",
+            "base": "7.500000"
+          },
+          "cve": "CVE-2024-6232",
+          "enumeration": "CVE",
+          "cvss": {
+            "cvss3": {
+              "base_score": "7.500000",
+              "vector": {
+                "user_interaction": "NONE",
+                "integrity_impact": "NONE",
+                "scope": "UNCHANGED",
+                "availability": "HIGH",
+                "confidentiality_impact": "NONE",
+                "privileges_required": "NONE"
+              }
+            }
+          },
+          "updated": "2024-09-04T21:15:14Z",
+          "status": "Active"
+        }
+      },
+      "rule": {
+        "firedtimes": 2,
+        "mail": false,
+        "level": 10,
+        "pci_dss": [
+          "11.2.1",
+          "11.2.3"
+        ],
+        "tsc": [
+          "CC7.1",
+          "CC7.2"
+        ],
+        "description": "CVE-2024-6232 affects Python 3.13.0 (64-bit)",
+        "groups": [
+          "vulnerability-detector"
+        ],
+        "id": "23505",
+        "gdpr": [
+          "IV_35.7.d"
+        ]
+      },
+      "location": "vulnerability-detector",
+      "decoder": {
+        "name": "json"
+      },
+      "id": "1737466616.13764126",
+      "timestamp": "2025-01-21T13:36:56.011+0000"
+    },
+    "fields": {
+      "data.vulnerability.published": [
+        "2024-09-03T13:15:05.000Z"
+      ],
+      "data.vulnerability.updated": [
+        "2024-09-04T21:15:14.000Z"
+      ],
+      "timestamp": [
+        "2025-01-21T13:36:56.011Z"
+      ]
+    },
+    "sort": [
+      1737466616011
+    ]
+  }

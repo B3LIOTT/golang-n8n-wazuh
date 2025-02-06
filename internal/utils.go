@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	IDSAgentName           = "OPNsense.insoc.local"
+	FirewallAgentName      = "OPNsense.insoc.local"
 	IDSGroup               = "suricata"
 	SuricataAlertThreshold = 3
 	WazuhAlertThreshold    = 7
@@ -18,42 +18,33 @@ var commonGroups = []string{"suricata", "sysmon", "syslog", "ossec"}
 func IsSuricata(alert Alert) bool {
 	for _, group := range alert.Rule.Groups {
 		if group == IDSGroup {
-			return alert.Agent.Name == IDSAgentName
+			return true
 		}
 	}
 	return false
 }
 
+// Checks if the alert comes from the firewall
+func IsFirewall(alert Alert) bool {
+	return alert.Agent.Name == FirewallAgentName
+}
+
 // Gets mitre attack data from the Wazuh alert
-func GetMitre(alert Alert) string {
+func JoinMitreTechs(alert Alert) string {
 	if len(alert.Rule.Mitre.Technique) > 0 {
-		return fmt.Sprintf("mitre_techniques=%s,mitre_tactics=%s,mitre_id=%s",
-			strings.Join(alert.Rule.Mitre.Technique, ";"),
-			strings.Join(alert.Rule.Mitre.Tactic, ";"),
-			strings.Join(alert.Rule.Mitre.ID, ";"))
+		return strings.Join(alert.Rule.Mitre.Technique, ",")
 	}
 	return ""
 }
 
-// Gets the agent data from the Wazuh alert
-func GetAgent(alert Alert) string {
-	if IsSuricata(alert) {
-		return fmt.Sprintf("src_ip=%s,src_port=%s,dest_ip=%s", alert.Data.SrcIP, alert.Data.SrcPort, alert.Data.DestIP)
-	}
-
-	if alert.Agent.IP == "" {
-		alert.Agent.IP = "None"
-	}
-	return fmt.Sprintf("src_ip=%s,agent_id=%s", alert.Agent.IP, alert.Agent.ID)
+// Gets the groups from the Wazuh alert
+func JoinGroups(alert Alert) string {
+	return strings.Join(alert.Rule.Groups, ",")
 }
 
 // Build tags for our FormattedAlert
 func GetTags(alert Alert) string {
-	mitre := GetMitre(alert)
-	if mitre != "" {
-		return fmt.Sprintf("%s,%s", GetAgent(alert), mitre)
-	}
-	return GetAgent(alert)
+	return fmt.Sprintf("%s,%s,%s", alert.Manager.Name, JoinGroups(alert), JoinMitreTechs(alert))
 }
 
 // Returns a common type for our FormattedAlert
@@ -66,4 +57,30 @@ func GetType(alert Alert) string {
 		}
 	}
 	return alert.Rule.Groups[0]
+}
+
+// Builds a CustomFields object for our FormattedAlert
+func GetCustomFields(alert Alert) CustomFields {
+	if IsFirewall(alert) {
+		cf := CustomFields{
+			SrcIp:    alert.Data.SrcIp,
+			SrcPort:  alert.Data.SrcPort,
+			DestIP:   alert.Data.DestIp,
+			DestPort: alert.Data.DestPort,
+			Protocol: alert.Data.Protocol,
+		}
+		if IsSuricata(alert) {
+			cf.Url = alert.Data.HttpSuricata.Url
+			return cf
+		}
+
+		return cf
+	} else {
+		return CustomFields{
+			AgentName: alert.Agent.Name,
+			AgentId:   alert.Agent.ID,
+			AgentIp:   alert.Agent.IP,
+		}
+	}
+
 }

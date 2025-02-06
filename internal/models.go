@@ -3,7 +3,6 @@ package internal
 // Wazuh alert structure
 // It gets every field I wanted
 // to be forwarded to n8n
-//
 type Alert struct {
 	Agent struct {
 		Name string `json:"name"`
@@ -34,7 +33,6 @@ type Alert struct {
 // Formated alert structure
 // It defines the alert structure
 // to be sent to n8n
-//
 type FormattedAlert struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`

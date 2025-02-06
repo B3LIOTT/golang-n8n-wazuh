@@ -26,14 +26,63 @@ This script has to be in `/var/ossec/integrations/` in your Wazuh Manager, as `c
 
 This script sends Wazuh alerts to n8n in order to be automatically forwarded into TheHive4 (+ cool automatisation stuff). However it builds customized alerts tailored to TheHive alerts and custom fields I added.
 
-Main structure:
-| Champ       | Type   | Description               |
-|------------|--------|---------------------------|
-| Title      | string | Titre de l'alerte         |
-| Description | string | Description détaillée    |
-| Severity   | int    | Niveau de gravité         |
-| Date       | string | Date de l'alerte          |
-| Tags       | string | Mots-clés associés        |
-| Type       | string | Type d'alerte             |
-| Source     | string | Source de l'alerte        |
+## Main structure
 
+The main alert structure is as it follows:
+| Field        | Type   |
+|--------------|--------|
+| Title        | string | 
+| Description  | string | 
+| Severity     | int    | 
+| Date         | string |
+| Tags         | string |
+| Type         | string | 
+| Source       | string |
+| CustomFields | dict   |
+
+## Tags
+
+Tags are very useful to add generic infos to an alert. Here are the tags I defined:
+| Tag              | Example                                  |
+|------------------|------------------------------------------|
+| manager type     | wazuh, suricata, opnsense                | 
+| mitre techniques | bruteforce, privilege escalation         | 
+| groups           | ossec, sysmon, vulnerability-detector    | 
+
+
+# Custom fileds
+
+Custom fields are useful to add more details to the alert.
+
+## Wazuh agent
+
+| Custom field | Example        |
+|--------------|----------------|
+| agent name   | DESKTOP-XXXXXX |   
+| agent id     | 001            | 
+| agent ip     | X.X.X.X        | 
+
+## Suricata
+
+| Custom field | Example        |
+|--------------|----------------|
+| src ip       | X.X.X.X        | 
+| src port     | 1234           | 
+| dest ip      | X.X.X.X        | 
+| dest port    | 5678           | 
+| protocol     | TCP            | 
+| url          | .../login.php  | 
+
+## OPNsense
+
+| Custom field | Example        |
+|--------------|----------------|
+| src ip       | X.X.X.X        | 
+| src port     | 1234           | 
+| dest ip      | X.X.X.X        | 
+| dest port    | 5678           | 
+| protocol     | TCP            | 
+
+## Sysmon
+
+TODO ...

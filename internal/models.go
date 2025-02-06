@@ -36,7 +36,7 @@ type Alert struct {
 		} `json:"http,omitempty"`
 		Alert struct {
 			Severity int `json:"severity"`
-		} `json:"alert"`
+		} `json:"alert,omitempty"`
 	} `json:"data,omitempty"`
 
 	Timestamp string `json:"timestamp"`
@@ -58,13 +58,13 @@ type FormattedAlert struct {
 
 // CustomFields defined in TheHive alerts
 type CustomFields struct {
-	AgentName string `json:"agent_name"`
-	AgentId   string `json:"agent_id"`
-	AgentIp   string `json:"agent_ip"`
-	SrcIp     string `json:"src_ip"`
-	SrcPort   string `json:"src_port"`
-	DestIP    string `json:"dest_ip"`
-	DestPort  string `json:"dest_port"`
-	Protocol  string `json:"protocol"`
-	Url       string `json:"url"`
+	AgentName string `json:"agent_name,omitempty"`
+	AgentId   string `json:"agent_id,omitempty"`
+	AgentIp   string `json:"agent_ip,omitempty"`
+	SrcIp     string `json:"src_ip,omitempty"`
+	SrcPort   string `json:"src_port,omitempty"`
+	DestIP    string `json:"dest_ip,omitempty"`
+	DestPort  string `json:"dest_port,omitempty"`
+	Protocol  string `json:"protocol,omitempty"`
+	Url       string `json:"url,omitempty"`
 }

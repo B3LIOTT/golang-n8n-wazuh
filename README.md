@@ -21,5 +21,19 @@ This script has to be in `/var/ossec/integrations/` in your Wazuh Manager, as `c
 </integration>
 ```
 
-# TODO
-I want to use `customFields` within TheHive alerts, so I will change the `FormattedAlert` structure which should be better
+
+# Details
+
+This script sends Wazuh alerts to n8n in order to be automatically forwarded into TheHive4 (+ cool automatisation stuff). However it builds customized alerts tailored to TheHive alerts and custom fields I added.
+
+Main structure:
+| Champ       | Type   | Description               |
+|------------|--------|---------------------------|
+| Title      | string | Titre de l'alerte         |
+| Description | string | Description détaillée    |
+| Severity   | int    | Niveau de gravité         |
+| Date       | string | Date de l'alerte          |
+| Tags       | string | Mots-clés associés        |
+| Type       | string | Type d'alerte             |
+| Source     | string | Source de l'alerte        |
+

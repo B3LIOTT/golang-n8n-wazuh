@@ -58,13 +58,14 @@ func main() {
 	}
 
 	formattedAlert := FormattedAlert{
-		Title:       alert.Rule.Description,
-		Description: "Alert from: " + alert.Agent.Name,
-		Severity:    severity,
-		Date:        alert.Timestamp,
-		Tags:        GetTags(alert),
-		Type:        GetType(alert),
-		Source:      source,
+		Title:        alert.Rule.Description,
+		Description:  "Alert from: " + alert.Agent.Name,
+		Severity:     severity,
+		Date:         alert.Timestamp,
+		Tags:         GetTags(alert),
+		Type:         GetType(alert),
+		Source:       source,
+		CustomFields: GetCustomFields(alert),
 	}
 
 	payload, err := json.Marshal(formattedAlert)

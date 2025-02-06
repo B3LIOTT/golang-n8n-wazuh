@@ -20,3 +20,6 @@ This script has to be in `/var/ossec/integrations/` in your Wazuh Manager, as `c
   <alert_format>json</alert_format>
 </integration>
 ```
+
+# TODO
+I want to use `customFields` within TheHive alerts, so I will change the `FormattedAlert` structure which should be better

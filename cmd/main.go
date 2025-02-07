@@ -8,6 +8,8 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/google/uuid"
+
 	. "golang-n8n-wazuh/internal"
 )
 
@@ -71,6 +73,7 @@ func main() {
 		os.Exit(0)
 	}
 
+	customFields := GetCustomFields(alert)
 	formattedAlert := FormattedAlert{
 		Title:        alert.Rule.Description,
 		Description:  "Alert from: " + alert.Agent.Name,
@@ -79,7 +82,8 @@ func main() {
 		Tags:         GetTags(alert),
 		Type:         GetType(alert),
 		Source:       source,
-		CustomFields: GetCustomFields(alert),
+		SourceRef:    uuid.New().String(),
+		CustomFields: customFields,
 	}
 
 	payload, err := json.Marshal(formattedAlert)

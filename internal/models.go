@@ -53,11 +53,13 @@ type FormattedAlert struct {
 	Tags         string       `json:"tags"`
 	Type         string       `json:"type"`
 	Source       string       `json:"source"`
+	SourceRef    string       `json:"sourceRef"`
 	CustomFields CustomFields `json:"customFields"`
 }
 
 // CustomFields defined in TheHive alerts
 type CustomFields struct {
+	Hash      string `json:"hash"`
 	AgentName string `json:"agent_name,omitempty"`
 	AgentId   string `json:"agent_id,omitempty"`
 	AgentIp   string `json:"agent_ip,omitempty"`

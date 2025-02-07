@@ -3,6 +3,8 @@ package internal
 import (
 	"fmt"
 	"strings"
+
+	"golang.org/x/crypto/blake2b"
 )
 
 const (
@@ -59,8 +61,10 @@ func GetType(alert Alert) string {
 
 // Builds a CustomFields object for our FormattedAlert
 func GetCustomFields(alert Alert) CustomFields {
+	var cf CustomFields
+
 	if IsFirewall(alert) {
-		cf := CustomFields{
+		cf = CustomFields{
 			SrcIp:    alert.Data.SrcIp,
 			SrcPort:  alert.Data.SrcPort,
 			DestIP:   alert.Data.DestIp,
@@ -69,16 +73,28 @@ func GetCustomFields(alert Alert) CustomFields {
 		}
 		if IsSuricata(alert) {
 			cf.Url = alert.Data.HttpSuricata.Url
-			return cf
 		}
-
-		return cf
 	} else {
-		return CustomFields{
+		cf = CustomFields{
 			AgentName: alert.Agent.Name,
 			AgentId:   alert.Agent.ID,
 			AgentIp:   alert.Agent.IP,
 		}
 	}
+	cf.Hash = cf.GetHash()
+	return cf
+}
 
+// CustomFields Object to string
+func (c CustomFields) ToString() string {
+	return fmt.Sprintf("%s%s%s%s%s%s%s%s%s",
+		c.AgentName, c.AgentId, c.AgentIp, c.SrcIp, c.SrcPort,
+		c.DestIP, c.DestPort, c.Protocol, c.Url)
+}
+
+// Gets a blake hash of CustomFields
+func (c CustomFields) GetHash() string {
+	data := []byte(c.ToString())
+	hash := blake2b.Sum256(data)
+	return fmt.Sprintf("%x", hash)
 }

@@ -11,7 +11,7 @@ GOOS=linux GOARCH=amd64 go build -o custom-n8n
 
 # Usage
 
-## Tests
+## Tests
 If you want to test it you can use alert samples [here](./alerts-examples/).
 
 Here is an example for the suricata alert:
@@ -19,7 +19,7 @@ Here is an example for the suricata alert:
 ./custom-n8n ../alerts-examples/suricata.json uselessparam "http://IP:5678/webhook-test/..."
 ```
 
-## Within Wazuh
+## Within Wazuh
 This script has to be in `/var/ossec/integrations/` in your Wazuh Manager, as `custom-n8n`. You also have to update `/var/ossec/etc/ossec.conf` in order to define a new integration:
 ```xml
 <integration>
@@ -62,7 +62,7 @@ Tags are very useful to add generic infos to an alert. Here are the tags I defin
 
 Custom fields are useful to add more details to the alert.
 
-## Wazuh agent
+## Wazuh agent
 
 | Custom field | Type   | Example        |
 |--------------|--------|----------------|
@@ -70,7 +70,7 @@ Custom fields are useful to add more details to the alert.
 | agent id     | string | 001            | 
 | agent ip     | string | X.X.X.X        | 
 
-## Suricata
+## Suricata
 
 | Custom field | Type   | Example        |
 |--------------|--------|----------------|
@@ -91,6 +91,6 @@ Custom fields are useful to add more details to the alert.
 | dest port    | string | 5678           | 
 | protocol     | string | TCP            | 
 
-## Sysmon
+## Sysmon
 
 TODO ...

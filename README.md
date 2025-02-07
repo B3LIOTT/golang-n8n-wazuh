@@ -51,11 +51,11 @@ The main alert structure is as it follows:
 ## Tags
 
 Tags are very useful to add generic infos to an alert. Here are the tags I defined:
-| Tag              | Example                                  |
-|------------------|------------------------------------------|
-| manager type     | wazuh, suricata, opnsense                | 
-| mitre techniques | bruteforce, privilege escalation         | 
-| groups           | ossec, sysmon, vulnerability-detector    | 
+| Tag              | Type   | Example                                  |
+|------------------|--------|------------------------------------------|
+| manager type     | string | wazuh, suricata, opnsense                | 
+| mitre techniques | string | bruteforce, privilege escalation         | 
+| groups           | string | ossec, sysmon, vulnerability-detector    | 
 
 
 # Custom fileds
@@ -64,32 +64,32 @@ Custom fields are useful to add more details to the alert.
 
 ## Wazuh agent
 
-| Custom field | Example        |
-|--------------|----------------|
-| agent name   | DESKTOP-XXXXXX |   
-| agent id     | 001            | 
-| agent ip     | X.X.X.X        | 
+| Custom field | Type   | Example        |
+|--------------|--------|----------------|
+| agent name   | string | DESKTOP-XXXXXX |   
+| agent id     | string | 001            | 
+| agent ip     | string | X.X.X.X        | 
 
 ## Suricata
 
-| Custom field | Example        |
-|--------------|----------------|
-| src ip       | X.X.X.X        | 
-| src port     | 1234           | 
-| dest ip      | X.X.X.X        | 
-| dest port    | 5678           | 
-| protocol     | TCP            | 
-| url          | .../login.php  | 
+| Custom field | Type   | Example        |
+|--------------|--------|----------------|
+| src ip       | string | X.X.X.X        | 
+| src port     | string | 1234           | 
+| dest ip      | string | X.X.X.X        | 
+| dest port    | string | 5678           | 
+| protocol     | string | TCP            | 
+| url          | string | .../login.php  | 
 
 ## OPNsense
 
-| Custom field | Example        |
-|--------------|----------------|
-| src ip       | X.X.X.X        | 
-| src port     | 1234           | 
-| dest ip      | X.X.X.X        | 
-| dest port    | 5678           | 
-| protocol     | TCP            | 
+| Custom field | Type   | Example        |
+|--------------|--------|----------------|
+| src ip       | string | X.X.X.X        | 
+| src port     | string | 1234           | 
+| dest ip      | string | X.X.X.X        | 
+| dest port    | string | 5678           | 
+| protocol     | string | TCP            | 
 
 ## Sysmon
 

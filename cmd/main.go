@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"os"
 	"strconv"
@@ -10,8 +11,14 @@ import (
 	. "golang-n8n-wazuh/internal"
 )
 
+const (
+	SuricataAlertThreshold = 3
+	WazuhAlertThreshold    = 5
+)
+
 func checkErr(err error) {
 	if err != nil {
+		fmt.Printf("%v", err)
 		os.Exit(1)
 	}
 }
@@ -23,9 +30,7 @@ func main() {
 
 	// reads Wazuh alert file
 	data, err := os.ReadFile(alertFile)
-	if err != nil {
-		os.Exit(1)
-	}
+	checkErr(err)
 
 	// unmarshals it
 	var alert Alert
@@ -37,6 +42,7 @@ func main() {
 	var source string
 
 	if IsSuricata(alert) {
+
 		suriSev, err := strconv.Atoi(alert.Data.Alert.Severity)
 		checkErr(err)
 
@@ -49,6 +55,8 @@ func main() {
 				severity = 1
 			}
 			source = "Suricata IDS"
+		} else {
+			os.Exit(0)
 		}
 	} else if alert.Rule.Level >= WazuhAlertThreshold {
 		if alert.Rule.Level > 10 {

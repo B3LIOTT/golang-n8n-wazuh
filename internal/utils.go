@@ -6,10 +6,8 @@ import (
 )
 
 const (
-	FirewallAgentName      = "OPNsense.insoc.local"
-	IDSGroup               = "suricata"
-	SuricataAlertThreshold = 3
-	WazuhAlertThreshold    = 7
+	FirewallAgentName = "OPNsense.insoc.local"
+	IDSGroup          = "suricata"
 )
 
 var commonGroups = []string{"suricata", "sysmon", "syslog", "ossec"}

@@ -11,6 +11,15 @@ GOOS=linux GOARCH=amd64 go build -o custom-n8n
 
 # Usage
 
+## Tests
+If you want to test it you can use alert samples [here](./alerts-examples/).
+
+Here is an example for the suricata alert:
+```bash
+./custom-n8n ../alerts-examples/suricata.json useless "http://192.168.7.15:5678/webhook-test/7ceae612-e110-4adf-8191-95557ec9b251"
+```
+
+## Within Wazuh
 This script has to be in `/var/ossec/integrations/` in your Wazuh Manager, as `custom-n8n`. You also have to update `/var/ossec/etc/ossec.conf` in order to define a new integration:
 ```xml
 <integration>
@@ -20,7 +29,6 @@ This script has to be in `/var/ossec/integrations/` in your Wazuh Manager, as `c
   <alert_format>json</alert_format>
 </integration>
 ```
-
 
 # Details
 

@@ -1,123 +1,110 @@
 {
-    "_index": "wazuh-alerts-4.x-2025.01.21",
-    "_id": "wQw6iJQBe3YkRPrL0THP",
-    "_score": null,
-    "_source": {
-      "input": {
-        "type": "log"
+  "input": {
+    "type": "log"
+  },
+  "agent": {
+    "ip": "10.0.2.15",
+    "name": "DESKTOP-4ILPQBN",
+    "id": "007"
+  },
+  "manager": {
+    "name": "wazuh"
+  },
+  "data": {
+    "win": {
+      "eventdata": {
+        "subjectLogonId": "0x3e7",
+        "subjectDomainName": "WORKGROUP",
+        "targetLinkedLogonId": "0x0",
+        "impersonationLevel": "%%1833",
+        "authenticationPackageName": "Negotiate",
+        "targetLogonId": "0x3e7",
+        "logonProcessName": "Advapi",
+        "logonGuid": "{00000000-0000-0000-0000-000000000000}",
+        "targetUserName": "Système",
+        "keyLength": "0",
+        "elevatedToken": "%%1842",
+        "subjectUserSid": "S-1-5-18",
+        "processId": "0x248",
+        "processName": "C:\\\\Windows\\\\System32\\\\services.exe",
+        "targetDomainName": "AUTORITE NT",
+        "targetUserSid": "S-1-5-18",
+        "virtualAccount": "%%1843",
+        "logonType": "5",
+        "subjectUserName": "DESKTOP-4ILPQBN$"
       },
-      "agent": {
-        "ip": "10.0.2.15",
-        "name": "DESKTOP-4ILPQBN",
-        "id": "007"
-      },
-      "manager": {
-        "name": "wazuh"
-      },
-      "data": {
-        "win": {
-          "eventdata": {
-            "subjectLogonId": "0x3e7",
-            "subjectDomainName": "WORKGROUP",
-            "targetLinkedLogonId": "0x0",
-            "impersonationLevel": "%%1833",
-            "authenticationPackageName": "Negotiate",
-            "targetLogonId": "0x3e7",
-            "logonProcessName": "Advapi",
-            "logonGuid": "{00000000-0000-0000-0000-000000000000}",
-            "targetUserName": "Système",
-            "keyLength": "0",
-            "elevatedToken": "%%1842",
-            "subjectUserSid": "S-1-5-18",
-            "processId": "0x248",
-            "processName": "C:\\\\Windows\\\\System32\\\\services.exe",
-            "targetDomainName": "AUTORITE NT",
-            "targetUserSid": "S-1-5-18",
-            "virtualAccount": "%%1843",
-            "logonType": "5",
-            "subjectUserName": "DESKTOP-4ILPQBN$"
-          },
-          "system": {
-            "eventID": "4624",
-            "keywords": "0x8020000000000000",
-            "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
-            "level": "0",
-            "channel": "Security",
-            "opcode": "0",
-            "message": "\"L'ouverture de session d'un compte s'est correctement déroulée.\r\n\r\nObjet :\r\n\tID de sécurité :\t\tS-1-5-18\r\n\tNom du compte :\t\tDESKTOP-4ILPQBN$\r\n\tDomaine du compte :\t\tWORKGROUP\r\n\tID d'ouverture de session :\t\t0x3E7\r\n\r\nInformations d'ouverture de session :\r\n\tType d'ouverture de session :\t\t5\r\n\tMode administrateur restreint :\t-\r\n\tCompte virtuel :\t\tNon\r\n\tJeton élevé :\t\tOui\r\n\r\nNiveau d'emprunt d'identité :\t\tEmprunt d’identité\r\n\r\nNouvelle ouverture de session :\r\n\tID de sécurité :\t\tS-1-5-18\r\n\tNom du compte :\t\tSystème\r\n\tDomaine du compte :\t\tAUTORITE NT\r\n\tID d'ouverture de session :\t\t0x3E7\r\n\tID d'ouverture de session liée :\t\t0x0\r\n\tNom du compte réseau :\t-\r\n\tDomaine du compte réseau :\t-\r\n\tGUID d'ouverture de session :\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nInformations sur le processus :\r\n\tID du processus :\t\t0x248\r\n\tNom du processus :\t\tC:\\Windows\\System32\\services.exe\r\n\r\nInformations sur le réseau :\r\n\tNom de la station de travail :\t-\r\n\tAdresse du réseau source :\t-\r\n\tPort source :\t\t-\r\n\r\nInformations détaillées sur l'authentification :\r\n\tProcessus d'ouverture de session :\t\tAdvapi  \r\n\tPackage d'authentification :\tNegotiate\r\n\tServices en transit :\t-\r\n\tNom du package (NTLM uniquement) :\t-\r\n\tLongueur de la clé :\t\t0\r\n\r\nCet événement est généré lors de la création d'une ouverture de session. Il est généré sur l'ordinateur sur lequel l'ouverture de session a été effectuée.\r\n\r\nLe champ Objet indique le compte sur le système local qui a demandé l'ouverture de session. Il s'agit le plus souvent d'un service, comme le service Serveur, ou un processus local tel que Winlogon.exe ou Services.exe.\r\n\r\nLe champ Type d'ouverture de session indique le type d'ouverture de session qui s'est produit. Les types les plus courants sont 2 (interactif) et 3 (réseau).\r\n\r\nLe champ Nouvelle ouverture de session indique le compte pour lequel la nouvelle ouverture de session a été créée, par exemple, le compte qui s'est connecté.\r\n\r\nLes champs relatifs au réseau indiquent la provenance d'une demande d'ouverture de session à distance. Le nom de la station de travail n'étant pas toujours disponible, peut être laissé vide dans certains cas.\r\n\r\nLe champ du niveau d'emprunt d'identité indique la portée de l'emprunt d'identité que peut prendre un processus dans la session d'ouverture de session.\r\n\r\nLes champs relatifs aux informations d'authentification fournissent des détails sur cette demande d'ouverture de session spécifique.\r\n\t- Le GUID d'ouverture de session est un identificateur unique pouvant servir à associer cet événement à un événement KDC .\r\n\t- Les services en transit indiquent les services intermédiaires qui ont participé à cette demande d'ouverture de session.\r\n\t- Nom du package indique quel est le sous-protocole qui a été utilisé parmi les protocoles NTLM.\r\n\t- La longueur de la clé indique la longueur de la clé de session générée. Elle a la valeur 0 si aucune clé de session n'a été demandée.\"",
-            "version": "2",
-            "systemTime": "2025-01-21T09:38:59.7751483Z",
-            "eventRecordID": "13067",
-            "threadID": "664",
-            "computer": "DESKTOP-4ILPQBN",
-            "task": "12544",
-            "processID": "592",
-            "severityValue": "AUDIT_SUCCESS",
-            "providerName": "Microsoft-Windows-Security-Auditing"
-          }
-        }
-      },
-      "rule": {
-        "mail": false,
-        "level": 3,
-        "pci_dss": [
-          "10.2.5"
-        ],
-        "hipaa": [
-          "164.312.b"
-        ],
-        "tsc": [
-          "CC6.8",
-          "CC7.2",
-          "CC7.3"
-        ],
-        "description": "Windows Logon Success",
-        "groups": [
-          "windows",
-          "windows_security",
-          "authentication_success"
-        ],
-        "nist_800_53": [
-          "AU.14",
-          "AC.9"
-        ],
-        "gdpr": [
-          "IV_32.2"
-        ],
-        "firedtimes": 5,
-        "mitre": {
-          "technique": [
-            "Valid Accounts"
-          ],
-          "id": [
-            "T1078"
-          ],
-          "tactic": [
-            "Defense Evasion",
-            "Persistence",
-            "Privilege Escalation",
-            "Initial Access"
-          ]
-        },
-        "id": "60106",
-        "gpg13": [
-          "7.1",
-          "7.2"
-        ]
-      },
-      "location": "EventChannel",
-      "decoder": {
-        "name": "windows_eventchannel"
-      },
-      "id": "1737452340.10545291",
-      "timestamp": "2025-01-21T09:39:00.831+0000"
-    },
-    "fields": {
-      "timestamp": [
-        "2025-01-21T09:39:00.831Z"
+      "system": {
+        "eventID": "4624",
+        "keywords": "0x8020000000000000",
+        "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+        "level": "0",
+        "channel": "Security",
+        "opcode": "0",
+        "message": "\"L'ouverture de session d'un compte s'est correctement déroulée.\r\n\r\nObjet :\r\n\tID de sécurité :\t\tS-1-5-18\r\n\tNom du compte :\t\tDESKTOP-4ILPQBN$\r\n\tDomaine du compte :\t\tWORKGROUP\r\n\tID d'ouverture de session :\t\t0x3E7\r\n\r\nInformations d'ouverture de session :\r\n\tType d'ouverture de session :\t\t5\r\n\tMode administrateur restreint :\t-\r\n\tCompte virtuel :\t\tNon\r\n\tJeton élevé :\t\tOui\r\n\r\nNiveau d'emprunt d'identité :\t\tEmprunt d’identité\r\n\r\nNouvelle ouverture de session :\r\n\tID de sécurité :\t\tS-1-5-18\r\n\tNom du compte :\t\tSystème\r\n\tDomaine du compte :\t\tAUTORITE NT\r\n\tID d'ouverture de session :\t\t0x3E7\r\n\tID d'ouverture de session liée :\t\t0x0\r\n\tNom du compte réseau :\t-\r\n\tDomaine du compte réseau :\t-\r\n\tGUID d'ouverture de session :\t\t{00000000-0000-0000-0000-000000000000}\r\n\r\nInformations sur le processus :\r\n\tID du processus :\t\t0x248\r\n\tNom du processus :\t\tC:\\Windows\\System32\\services.exe\r\n\r\nInformations sur le réseau :\r\n\tNom de la station de travail :\t-\r\n\tAdresse du réseau source :\t-\r\n\tPort source :\t\t-\r\n\r\nInformations détaillées sur l'authentification :\r\n\tProcessus d'ouverture de session :\t\tAdvapi  \r\n\tPackage d'authentification :\tNegotiate\r\n\tServices en transit :\t-\r\n\tNom du package (NTLM uniquement) :\t-\r\n\tLongueur de la clé :\t\t0\r\n\r\nCet événement est généré lors de la création d'une ouverture de session. Il est généré sur l'ordinateur sur lequel l'ouverture de session a été effectuée.\r\n\r\nLe champ Objet indique le compte sur le système local qui a demandé l'ouverture de session. Il s'agit le plus souvent d'un service, comme le service Serveur, ou un processus local tel que Winlogon.exe ou Services.exe.\r\n\r\nLe champ Type d'ouverture de session indique le type d'ouverture de session qui s'est produit. Les types les plus courants sont 2 (interactif) et 3 (réseau).\r\n\r\nLe champ Nouvelle ouverture de session indique le compte pour lequel la nouvelle ouverture de session a été créée, par exemple, le compte qui s'est connecté.\r\n\r\nLes champs relatifs au réseau indiquent la provenance d'une demande d'ouverture de session à distance. Le nom de la station de travail n'étant pas toujours disponible, peut être laissé vide dans certains cas.\r\n\r\nLe champ du niveau d'emprunt d'identité indique la portée de l'emprunt d'identité que peut prendre un processus dans la session d'ouverture de session.\r\n\r\nLes champs relatifs aux informations d'authentification fournissent des détails sur cette demande d'ouverture de session spécifique.\r\n\t- Le GUID d'ouverture de session est un identificateur unique pouvant servir à associer cet événement à un événement KDC .\r\n\t- Les services en transit indiquent les services intermédiaires qui ont participé à cette demande d'ouverture de session.\r\n\t- Nom du package indique quel est le sous-protocole qui a été utilisé parmi les protocoles NTLM.\r\n\t- La longueur de la clé indique la longueur de la clé de session générée. Elle a la valeur 0 si aucune clé de session n'a été demandée.\"",
+        "version": "2",
+        "systemTime": "2025-01-21T09:38:59.7751483Z",
+        "eventRecordID": "13067",
+        "threadID": "664",
+        "computer": "DESKTOP-4ILPQBN",
+        "task": "12544",
+        "processID": "592",
+        "severityValue": "AUDIT_SUCCESS",
+        "providerName": "Microsoft-Windows-Security-Auditing"
+      }
+    }
+  },
+  "rule": {
+    "mail": false,
+    "level": 3,
+    "pci_dss": [
+      "10.2.5"
+    ],
+    "hipaa": [
+      "164.312.b"
+    ],
+    "tsc": [
+      "CC6.8",
+      "CC7.2",
+      "CC7.3"
+    ],
+    "description": "Windows Logon Success",
+    "groups": [
+      "windows",
+      "windows_security",
+      "authentication_success"
+    ],
+    "nist_800_53": [
+      "AU.14",
+      "AC.9"
+    ],
+    "gdpr": [
+      "IV_32.2"
+    ],
+    "firedtimes": 5,
+    "mitre": {
+      "technique": [
+        "Valid Accounts"
+      ],
+      "id": [
+        "T1078"
+      ],
+      "tactic": [
+        "Defense Evasion",
+        "Persistence",
+        "Privilege Escalation",
+        "Initial Access"
       ]
     },
-    "sort": [
-      1737452340831
+    "id": "60106",
+    "gpg13": [
+      "7.1",
+      "7.2"
     ]
-  }
+  },
+  "location": "EventChannel",
+  "decoder": {
+    "name": "windows_eventchannel"
+  },
+  "id": "1737452340.10545291",
+  "timestamp": "2025-01-21T09:39:00.831+0000"
+}

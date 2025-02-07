@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"os"
+	"strconv"
 
 	. "golang-n8n-wazuh/internal"
 )
@@ -35,15 +36,20 @@ func main() {
 	var severity int
 	var source string
 
-	if IsSuricata(alert) && alert.Data.Alert.Severity >= SuricataAlertThreshold {
-		if alert.Data.Alert.Severity > 5 {
-			severity = 3
-		} else if alert.Data.Alert.Severity > 3 {
-			severity = 2
-		} else {
-			severity = 1
+	if IsSuricata(alert) {
+		suriSev, err := strconv.Atoi(alert.Data.Alert.Severity)
+		checkErr(err)
+
+		if suriSev >= SuricataAlertThreshold {
+			if suriSev > 5 {
+				severity = 3
+			} else if suriSev > 3 {
+				severity = 2
+			} else {
+				severity = 1
+			}
+			source = "Suricata IDS"
 		}
-		source = "Suricata IDS"
 	} else if alert.Rule.Level >= WazuhAlertThreshold {
 		if alert.Rule.Level > 10 {
 			severity = 3

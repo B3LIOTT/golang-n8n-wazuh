@@ -35,7 +35,7 @@ type Alert struct {
 			Url string `json:"url"`
 		} `json:"http,omitempty"`
 		Alert struct {
-			Severity int `json:"severity"`
+			Severity string `json:"severity"`
 		} `json:"alert,omitempty"`
 	} `json:"data,omitempty"`
 
